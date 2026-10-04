@@ -1,0 +1,29 @@
+name: fixgeo_app
+description: Aplicación móvil FixGeo para servicios del hogar.
+publish_to: "none"
+version: 0.1.0+1
+
+environment:
+  sdk: ">=3.3.0 <4.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.8
+  flutter_animate: ^4.5.2
+  phosphoricons_flutter: ^1.0.0
+  image_picker: ^1.2.3
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+  assets:
+    - assets/images/auth/
+    - assets/optimized/onboarding/
+    - assets/optimized/categorias/
+    - assets/optimized/redes/
+    - assets/icons/
