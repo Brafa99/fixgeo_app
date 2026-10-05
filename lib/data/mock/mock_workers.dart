@@ -18,7 +18,7 @@ final List<WorkerModel> mockWorkers = List.unmodifiable([
     experience: 9,
     description:
         'Especialista en instalaciones sanitarias y eléctricas residenciales.',
-    coverageRadiusKm: 12,
+    coverageRadiusKm: 5,
     serviceIds: ['service_plumbing', 'service_electricity'],
     createdAt: DateTime.utc(2025, 8, 10, 12),
   ),

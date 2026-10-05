@@ -12,6 +12,7 @@ import '../../../shared/widgets/app_button.dart';
 import '../../../shared/widgets/app_password_field.dart';
 import '../../../shared/widgets/app_text_field.dart';
 import '../../../shared/widgets/optimized_asset_image.dart';
+import '../../../core/enums/user_role.dart';
 import '../repositories/auth_repository.dart';
 import '../services/auth_service.dart';
 
@@ -63,8 +64,14 @@ class _LoginScreenState extends State<LoginScreen> {
       );
       if (!mounted) return;
 
+      final targetRoute = switch (user.role) {
+        UserRole.worker => RouteNames.providerHome,
+        UserRole.company => RouteNames.companyHome,
+        _ => RouteNames.home,
+      };
+
       await Navigator.of(context).pushNamedAndRemoveUntil(
-        RouteNames.home,
+        targetRoute,
         (route) => false,
         arguments: user,
       );

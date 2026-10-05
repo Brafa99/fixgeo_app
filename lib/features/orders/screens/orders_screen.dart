@@ -27,10 +27,6 @@ class _OrdersScreenState extends State<OrdersScreen> {
   }
 
   void _openAccountMenu() {
-    if (widget.user == null) {
-      _openLogin();
-      return;
-    }
     Navigator.pushNamed(
       context,
       RouteNames.accountMenu,

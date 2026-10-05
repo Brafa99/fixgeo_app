@@ -34,4 +34,6 @@ abstract final class RouteNames {
   static const clientHome = '/client/home';
   static const providerHome = '/provider/home';
   static const companyHome = '/company/home';
+  static const workerOrders = '/worker/orders';
+  static const workerRequestDetail = '/worker/requests/detail';
 }
