@@ -30,14 +30,46 @@ abstract final class AppStrings {
   static const repeatPassword = 'Repetir contraseña';
   static const acceptTerms = 'Acepto los términos y condiciones';
   static const acceptPrivacy = 'Acepto la política de privacidad';
-  static const identifier = 'Teléfono o correo electrónico';
+  static const identifier = 'Correo o teléfono';
   static const signIn = 'Ingresar';
+  static const identifierRequired = 'Ingresá tu teléfono o correo electrónico.';
+  static const passwordRequired = 'Ingresá tu contraseña.';
+  static const unexpectedLoginError =
+      'No se pudo iniciar sesión. Intentá nuevamente.';
   static const enter = 'Entrar';
   static const homeSearchTitle = '¿Qué necesitás solucionar hoy?';
   static const homeSearchDescription =
       'Encontrá profesionales de confianza cerca de vos.';
   static const homeSearchHint = 'Ej. reparar una fuga de agua';
   static const categories = 'Categorías';
+  static const loadingCategories = 'Cargando categorías...';
+  static const noCategories = 'No hay categorías disponibles';
+  static const categoriesLoadError = 'No pudimos cargar las categorías.';
+  static const tryAgain = 'Intenta nuevamente.';
+  static const retry = 'Reintentar';
+  static const selectedService = 'Servicio seleccionado';
+  static const serviceRequestIntro =
+      'Cuéntanos qué necesitas y encontraremos prestadores cercanos.';
+  static const whatDoYouNeed = '¿Qué necesitas?';
+  static const requestDescriptionHint =
+      'Describe el problema o trabajo que necesitas realizar...';
+  static const addPhotos = 'Agregar fotos';
+  static const addPhotosHelp =
+      'Ayuda al prestador a entender mejor el trabajo.';
+  static const location = 'Ubicación';
+  static const changeLocation = 'Cambiar ubicación';
+  static const whenDoYouNeedIt = '¿Cuándo necesitas el servicio?';
+  static const asSoonAsPossible = 'Lo antes posible';
+  static const chooseDate = 'Elegir fecha';
+  static const summary = 'Resumen';
+  static const confirmRequest = 'Confirmar solicitud';
+  static const serviceDetail = 'Detalle del servicio';
+  static const requestableServices = 'Servicios que puedes solicitar';
+  static const serviceNotFound = 'No encontramos este servicio.';
+  static const serviceLoadError = 'No pudimos cargar el servicio.';
+  static const loadingService = 'Cargando servicio...';
+  static const providersAndCompanies = 'Profesionales y empresas';
+  static const noProviders = 'No hay prestadores disponibles';
   static const explore = 'Explorar';
   static const seeAll = 'Ver todo';
   static const helpTitle = '¿Necesitás ayuda?';
@@ -49,6 +81,20 @@ abstract final class AppStrings {
   static const homeTab = 'Inicio';
   static const requestsTab = 'Pedidos';
   static const accountTab = 'Cuenta';
+  static const accountTitle = 'Mi cuenta';
+  static const settings = 'Ajustes';
+  static const clientRole = 'Cliente';
+  static const mockClientName = 'Sergio Juan';
+  static const myOrders = 'Mis pedidos';
+  static const howItWorks = 'Cómo funciona';
+  static const earnMoney = 'Ganar dinero';
+  static const exploreServices = 'Explorar servicios';
+  static const becomeProvider = 'Ser prestador de servicios';
+  static const signOut = 'Cerrar sesión';
+  static const notifications = 'Notificaciones';
+  static const openMenu = 'Abrir menú';
+  static const closeMenu = 'Cerrar menú';
+  static const comingSoon = 'Esta opción estará disponible próximamente.';
   static const requestService = 'Pedir servicio';
   static const register = 'Registrarte';
   static const services = 'Servicios';

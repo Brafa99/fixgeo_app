@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 
 import '../../../core/theme/app_colors.dart';
 import '../../../core/theme/app_shadows.dart';
-import '../../../core/utils/app_image_cache.dart';
-import '../../../shared/widgets/optimized_asset_image.dart';
 import '../models/service_category.dart';
+import 'category_card.dart';
 import 'home_search_field.dart';
 
 class HomeSearchCard extends StatefulWidget {
@@ -13,6 +12,7 @@ class HomeSearchCard extends StatefulWidget {
     this.onSearchTap,
     this.onSearchChanged,
     this.onSearchSubmit,
+    this.onCategoryTap,
     super.key,
   });
 
@@ -20,6 +20,7 @@ class HomeSearchCard extends StatefulWidget {
   final VoidCallback? onSearchTap;
   final ValueChanged<String>? onSearchChanged;
   final VoidCallback? onSearchSubmit;
+  final ValueChanged<ServiceCategory>? onCategoryTap;
 
   @override
   State<HomeSearchCard> createState() => _HomeSearchCardState();
@@ -83,65 +84,21 @@ class _HomeSearchCardState extends State<HomeSearchCard> {
               scrollDirection: Axis.horizontal,
               itemCount: widget.categories.length,
               separatorBuilder: (_, __) => const SizedBox(width: 12),
-              itemBuilder: (context, index) => _QuickCategory(
-                category: widget.categories[index],
+              itemBuilder: (context, index) => CategoryCard(
+                key: ValueKey('home-category-${widget.categories[index].id}'),
+                name: widget.categories[index].name,
+                image: widget.categories[index].image,
                 isSelected: index == _selectedIndex,
-                onTap: () => setState(() => _selectedIndex = index),
+                variant: CategoryCardVariant.compact,
+                size: 94,
+                onTap: () {
+                  setState(() => _selectedIndex = index);
+                  widget.onCategoryTap?.call(widget.categories[index]);
+                },
               ),
             ),
           ),
         ],
-      ),
-    );
-  }
-}
-
-class _QuickCategory extends StatelessWidget {
-  const _QuickCategory({
-    required this.category,
-    required this.isSelected,
-    required this.onTap,
-  });
-
-  final ServiceCategory category;
-  final bool isSelected;
-  final VoidCallback onTap;
-
-  @override
-  Widget build(BuildContext context) {
-    return Semantics(
-      button: true,
-      selected: isSelected,
-      label: category.name,
-      child: Material(
-        color: Colors.transparent,
-        child: InkWell(
-          onTap: onTap,
-          borderRadius: BorderRadius.circular(22),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 180),
-            width: 94,
-            padding: const EdgeInsets.all(3),
-            decoration: BoxDecoration(
-              color: AppColors.cyanSoft,
-              borderRadius: BorderRadius.circular(22),
-              border: Border.all(
-                color: isSelected ? AppColors.primary : Colors.transparent,
-                width: 2,
-              ),
-            ),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(18),
-              child: OptimizedAssetImage(
-                assetName: category.image,
-                cacheWidth: AppImageDecodeSize.category,
-                width: 88,
-                height: 98,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-        ),
       ),
     );
   }

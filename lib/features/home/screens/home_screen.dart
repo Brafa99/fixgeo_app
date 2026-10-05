@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_sizes.dart';
 import '../../../core/routes/route_names.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../models/user_model.dart';
 import '../data/home_mock_data.dart';
 import '../widgets/home_bottom_navigation.dart';
 import '../widgets/home_content_sections.dart';
@@ -10,7 +11,9 @@ import '../widgets/home_header.dart';
 import '../widgets/home_search_card.dart';
 
 class HomeScreen extends StatefulWidget {
-  const HomeScreen({super.key});
+  const HomeScreen({this.user, super.key});
+
+  final UserModel? user;
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
@@ -20,11 +23,27 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedNavigationIndex = 0;
 
   void _openAccountMenu() {
-    Navigator.pushNamed(context, RouteNames.accountMenu);
+    if (widget.user == null) {
+      _openLogin();
+      return;
+    }
+    Navigator.pushNamed(
+      context,
+      RouteNames.accountMenu,
+      arguments: widget.user,
+    );
   }
 
   void _openLogin() {
     Navigator.pushNamed(context, RouteNames.login);
+  }
+
+  void _openAllCategories() {
+    Navigator.pushNamed(
+      context,
+      RouteNames.allCategories,
+      arguments: widget.user,
+    );
   }
 
   @override
@@ -49,7 +68,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       child: Stack(
                         children: [
                           HomeHeader(
-                            onEnter: _openLogin,
+                            userName: widget.user?.name,
+                            onEnter: widget.user == null
+                                ? _openLogin
+                                : _openAccountMenu,
                             onMenu: _openAccountMenu,
                           ),
                           Padding(
@@ -59,6 +81,11 @@ class _HomeScreenState extends State<HomeScreen> {
                               onSearchTap: () {},
                               onSearchChanged: (_) {},
                               onSearchSubmit: _openLogin,
+                              onCategoryTap: (category) {
+                                if (category.id == 'more') {
+                                  _openAllCategories();
+                                }
+                              },
                             ),
                           ),
                         ],
@@ -88,7 +115,11 @@ class _HomeScreenState extends State<HomeScreen> {
                 currentIndex: _selectedNavigationIndex,
                 onDestinationSelected: (index) {
                   if (index == 1) {
-                    Navigator.pushReplacementNamed(context, RouteNames.orders);
+                    Navigator.pushReplacementNamed(
+                      context,
+                      RouteNames.orders,
+                      arguments: widget.user,
+                    );
                     return;
                   }
                   if (index == 2) {

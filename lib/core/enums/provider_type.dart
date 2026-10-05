@@ -1,0 +1,4 @@
+enum ProviderType {
+  worker,
+  company,
+}

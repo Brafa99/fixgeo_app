@@ -5,12 +5,15 @@ import 'package:flutter/material.dart';
 import '../../../core/constants/app_sizes.dart';
 import '../../../core/routes/route_names.dart';
 import '../../../core/theme/app_colors.dart';
+import '../../../models/user_model.dart';
 import '../../home/widgets/home_bottom_navigation.dart';
 import '../widgets/orders_empty_state.dart';
 import '../widgets/orders_header.dart';
 
 class OrdersScreen extends StatefulWidget {
-  const OrdersScreen({super.key});
+  const OrdersScreen({this.user, super.key});
+
+  final UserModel? user;
 
   @override
   State<OrdersScreen> createState() => _OrdersScreenState();
@@ -24,12 +27,24 @@ class _OrdersScreenState extends State<OrdersScreen> {
   }
 
   void _openAccountMenu() {
-    Navigator.pushNamed(context, RouteNames.accountMenu);
+    if (widget.user == null) {
+      _openLogin();
+      return;
+    }
+    Navigator.pushNamed(
+      context,
+      RouteNames.accountMenu,
+      arguments: widget.user,
+    );
   }
 
   void _handleNavigation(int index) {
     if (index == 0) {
-      Navigator.pushReplacementNamed(context, RouteNames.home);
+      Navigator.pushReplacementNamed(
+        context,
+        RouteNames.home,
+        arguments: widget.user,
+      );
       return;
     }
     if (index == 2) {

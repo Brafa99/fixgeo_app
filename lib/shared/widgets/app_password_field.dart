@@ -10,6 +10,7 @@ class AppPasswordField extends StatefulWidget {
     this.prefixIcon,
     this.textInputAction,
     this.autofillHints,
+    this.onFieldSubmitted,
     super.key,
   });
 
@@ -19,6 +20,7 @@ class AppPasswordField extends StatefulWidget {
   final Widget? prefixIcon;
   final TextInputAction? textInputAction;
   final Iterable<String>? autofillHints;
+  final ValueChanged<String>? onFieldSubmitted;
 
   @override
   State<AppPasswordField> createState() => _AppPasswordFieldState();
@@ -37,6 +39,7 @@ class _AppPasswordFieldState extends State<AppPasswordField> {
       prefixIcon: widget.prefixIcon,
       textInputAction: widget.textInputAction,
       autofillHints: widget.autofillHints,
+      onFieldSubmitted: widget.onFieldSubmitted,
       suffixIcon: IconButton(
         tooltip: _obscureText ? 'Mostrar contraseña' : 'Ocultar contraseña',
         onPressed: () => setState(() => _obscureText = !_obscureText),

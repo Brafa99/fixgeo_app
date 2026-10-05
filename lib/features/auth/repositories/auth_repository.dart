@@ -1,6 +1,7 @@
 import '../models/account_type.dart';
 import '../models/client_registration_data.dart';
 import '../services/auth_service.dart';
+import '../../../models/user_model.dart';
 
 /// Application-facing entry point for authentication.
 ///
@@ -11,7 +12,7 @@ class AuthRepository {
 
   final AuthService _service;
 
-  Future<void> signIn({
+  Future<UserModel> signIn({
     required String identifier,
     required String password,
   }) =>

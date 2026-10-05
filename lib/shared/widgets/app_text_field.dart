@@ -11,6 +11,7 @@ class AppTextField extends StatelessWidget {
     this.suffixIcon,
     this.textInputAction,
     this.autofillHints,
+    this.onFieldSubmitted,
     super.key,
   });
 
@@ -23,6 +24,7 @@ class AppTextField extends StatelessWidget {
   final Widget? suffixIcon;
   final TextInputAction? textInputAction;
   final Iterable<String>? autofillHints;
+  final ValueChanged<String>? onFieldSubmitted;
 
   @override
   Widget build(BuildContext context) {
@@ -33,6 +35,7 @@ class AppTextField extends StatelessWidget {
       obscureText: obscureText,
       textInputAction: textInputAction,
       autofillHints: autofillHints,
+      onFieldSubmitted: onFieldSubmitted,
       decoration: InputDecoration(
         labelText: label,
         prefixIcon: prefixIcon,

@@ -1,0 +1,15 @@
+const Map<String, String> mockPasswordsByUserId = {
+  'client_001': 'FixGeo.Cliente01!',
+  'client_002': 'FixGeo.Cliente02!',
+  'client_003': 'FixGeo.Cliente03!',
+  'client_004': 'FixGeo.Cliente04!',
+  'client_005': 'FixGeo.Cliente05!',
+  'worker_001': 'FixGeo.Trabajador01!',
+  'worker_002': 'FixGeo.Trabajador02!',
+  'worker_003': 'FixGeo.Trabajador03!',
+  'worker_004': 'FixGeo.Trabajador04!',
+  'worker_005': 'FixGeo.Trabajador05!',
+  'company_001': 'FixGeo.Empresa01!',
+  'company_002': 'FixGeo.Empresa02!',
+  'company_003': 'FixGeo.Empresa03!',
+};

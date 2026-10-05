@@ -1,3 +1,6 @@
+import 'package:fixgeo_app/data/mock/mock_clients.dart';
+import 'package:fixgeo_app/data/mock/mock_companies.dart';
+import 'package:fixgeo_app/data/mock/mock_workers.dart';
 import 'package:fixgeo_app/features/home/screens/home_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
@@ -40,5 +43,20 @@ void main() {
     expect(find.text('Nuestras redes sociales'), findsOneWidget);
     expect(find.text('WhatsApp'), findsOneWidget);
     expect(tester.takeException(), isNull);
+  });
+
+  testWidgets('home greets authenticated clients, workers and companies', (
+    tester,
+  ) async {
+    final users = [mockClients.first, mockWorkers.first, mockCompanies.first];
+
+    for (final user in users) {
+      await tester.pumpWidget(MaterialApp(home: HomeScreen(user: user)));
+      await tester.pump();
+
+      expect(find.text('Hola, ${user.name}'), findsOneWidget);
+      expect(find.text('Entrar'), findsNothing);
+      expect(tester.takeException(), isNull);
+    }
   });
 }

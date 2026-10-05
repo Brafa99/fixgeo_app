@@ -9,11 +9,13 @@ class HomeHeader extends StatelessWidget {
   const HomeHeader({
     required this.onEnter,
     required this.onMenu,
+    this.userName,
     super.key,
   });
 
   final VoidCallback onEnter;
   final VoidCallback onMenu;
+  final String? userName;
 
   @override
   Widget build(BuildContext context) {
@@ -34,31 +36,43 @@ class HomeHeader extends StatelessWidget {
                   size: 30,
                 ),
                 SizedBox(width: 5),
-                Text(
-                  AppStrings.appName,
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 28,
-                    fontWeight: FontWeight.w900,
-                    height: 1,
-                    letterSpacing: -1,
+                Flexible(
+                  child: Text(
+                    AppStrings.appName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 28,
+                      fontWeight: FontWeight.w900,
+                      height: 1,
+                      letterSpacing: -1,
+                    ),
                   ),
                 ),
               ],
             ),
           ),
-          TextButton(
-            onPressed: onEnter,
-            style: TextButton.styleFrom(
-              foregroundColor: AppColors.textPrimary,
-              backgroundColor: Colors.white,
-              minimumSize: const Size(88, 46),
-              padding: const EdgeInsets.symmetric(horizontal: 20),
-              shape: const StadiumBorder(),
-            ),
-            child: const Text(
-              AppStrings.enter,
-              style: TextStyle(fontSize: 15, fontWeight: FontWeight.w800),
+          ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 154),
+            child: TextButton(
+              onPressed: onEnter,
+              style: TextButton.styleFrom(
+                foregroundColor: AppColors.textPrimary,
+                backgroundColor: Colors.white,
+                minimumSize: const Size(88, 46),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                shape: const StadiumBorder(),
+              ),
+              child: Text(
+                userName == null ? AppStrings.enter : 'Hola, $userName',
+                maxLines: 1,
+                overflow: TextOverflow.ellipsis,
+                style: const TextStyle(
+                  fontSize: 15,
+                  fontWeight: FontWeight.w800,
+                ),
+              ),
             ),
           ),
           const SizedBox(width: AppSizes.spacingSm),

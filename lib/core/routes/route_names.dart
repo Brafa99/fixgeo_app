@@ -4,6 +4,12 @@ abstract final class RouteNames {
   static const home = '/home';
   static const orders = '/orders';
   static const accountMenu = '/account/menu';
+  static const allCategories = '/categories/all';
+  static const serviceCategoryDetail = '/categories/detail';
+  static const createServiceRequest = '/service-requests/create';
+  static const confirmServiceRequest = '/service-requests/confirm';
+  static const searchingProviders = '/service-requests/searching';
+  static const nearbyProviders = '/service-requests/nearby-providers';
   static const accountType = '/auth/account-type';
   static const registerClientPersonal = '/auth/client/register/personal';
   static const registerClientContact = '/auth/client/register/contact';

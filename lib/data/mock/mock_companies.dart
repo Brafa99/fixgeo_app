@@ -1,0 +1,66 @@
+import '../../models/company_model.dart';
+
+final List<CompanyModel> mockCompanies = List.unmodifiable([
+  CompanyModel(
+    id: 'company_001',
+    legalName: 'Soluciones Andinas Integrales S.R.L.',
+    commercialName: 'Andina Hogar',
+    email: 'contacto@andinahogar.fixgeo.example',
+    phone: '+591 73000001',
+    logo: 'https://cdn.fixgeo.example/companies/company_001.png',
+    address: 'Avenida Arce 2333, San Jorge, La Paz',
+    latitude: -16.5040,
+    longitude: -68.1430,
+    description:
+        'Mantenimiento integral, electricidad y plomería para hogares y oficinas.',
+    rating: 4.8,
+    reviewCount: 164,
+    isActive: true,
+    serviceIds: [
+      'service_electricity',
+      'service_plumbing',
+      'service_maintenance',
+    ],
+    createdAt: DateTime.utc(2025, 6, 2, 13),
+  ),
+  CompanyModel(
+    id: 'company_002',
+    legalName: 'Limpieza Illimani S.A.',
+    commercialName: 'Illimani Clean',
+    email: 'reservas@illimaniclean.fixgeo.example',
+    phone: '+591 73000002',
+    logo: 'https://cdn.fixgeo.example/companies/company_002.png',
+    address: 'Calle Rosendo Gutiérrez 521, Sopocachi, La Paz',
+    latitude: -16.4980,
+    longitude: -68.1540,
+    description:
+        'Limpieza profesional y jardinería para viviendas y condominios.',
+    rating: 4.7,
+    reviewCount: 209,
+    isActive: true,
+    serviceIds: ['service_cleaning', 'service_gardening'],
+    createdAt: DateTime.utc(2025, 7, 19, 16, 45),
+  ),
+  CompanyModel(
+    id: 'company_003',
+    legalName: 'Constructora Metropolitana Bolivia S.R.L.',
+    commercialName: 'Metro Obras',
+    email: 'proyectos@metroobras.fixgeo.example',
+    phone: '+591 73000003',
+    logo: 'https://cdn.fixgeo.example/companies/company_003.png',
+    address: 'Avenida Kantutani 420, Bajo Llojeta, La Paz',
+    latitude: -16.5190,
+    longitude: -68.1450,
+    description:
+        'Construcción, albañilería, pintura y mantenimiento de inmuebles.',
+    rating: 4.6,
+    reviewCount: 98,
+    isActive: true,
+    serviceIds: [
+      'service_masonry',
+      'service_painting',
+      'service_maintenance',
+    ],
+    createdAt: DateTime.utc(2025, 8, 27, 12, 30),
+  ),
+]);

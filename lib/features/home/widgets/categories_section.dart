@@ -46,8 +46,10 @@ class _CategoriesSectionState extends State<CategoriesSection> {
             separatorBuilder: (context, index) =>
                 const SizedBox(width: AppSizes.spacingSm),
             itemBuilder: (context, index) => CategoryCard(
-              category: widget.categories[index],
+              name: widget.categories[index].name,
+              image: widget.categories[index].image,
               isSelected: index == _selectedIndex,
+              variant: CategoryCardVariant.compact,
               onTap: () => setState(() => _selectedIndex = index),
             ),
           ),
