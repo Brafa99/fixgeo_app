@@ -7,9 +7,9 @@ build/
 
 # IDE
 .idea/
-.vscode/
 *.iml
 
+temp_auto_push.bat
 # Platform-generated files
 android/.gradle/
 android/local.properties
@@ -18,6 +18,8 @@ ios/.symlinks/
 ios/Flutter/ephemeral/
 
 # Environment files
-.env
-.env.*
 !.env.example
+.gitignore
+branch_structure.json
+config.bat
+node_modules

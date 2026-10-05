@@ -23,10 +23,6 @@ class _HomeScreenState extends State<HomeScreen> {
   int _selectedNavigationIndex = 0;
 
   void _openAccountMenu() {
-    if (widget.user == null) {
-      _openLogin();
-      return;
-    }
     Navigator.pushNamed(
       context,
       RouteNames.accountMenu,
