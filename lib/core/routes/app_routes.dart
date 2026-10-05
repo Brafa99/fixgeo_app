@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../features/account/screens/account_menu_screen.dart';
 import '../../features/account/screens/client_account_screen.dart';
 import '../../features/auth/screens/account_type_screen.dart';
 import '../../features/auth/screens/login_screen.dart';
@@ -37,7 +38,11 @@ import '../../features/worker_registration/screens/worker_confirmation_screen.da
 import '../../features/worker_registration/screens/worker_contact_screen.dart';
 import '../../features/worker_registration/screens/worker_presentation_screen.dart';
 import '../../features/worker_registration/screens/worker_services_screen.dart';
+import '../../core/enums/user_role.dart';
+import '../../features/orders/screens/worker_orders_screen.dart';
+import '../../features/orders/screens/worker_request_detail_screen.dart';
 import '../../models/user_model.dart';
+import '../../models/worker_model.dart';
 import '../constants/app_strings.dart';
 import 'route_names.dart';
 
@@ -80,8 +85,15 @@ abstract final class AppRoutes {
       RouteNames.splash => const SplashScreen(),
       RouteNames.onboarding => const OnboardingScreen(),
       RouteNames.home => HomeScreen(user: authenticatedUser),
-      RouteNames.orders => OrdersScreen(user: authenticatedUser),
-      RouteNames.accountMenu => ClientAccountScreen(user: authenticatedUser),
+      RouteNames.orders => authenticatedUser?.role == UserRole.worker
+          ? WorkerOrdersScreen(
+              worker:
+                  authenticatedUser is WorkerModel ? authenticatedUser : null,
+            )
+          : OrdersScreen(user: authenticatedUser),
+      RouteNames.accountMenu => authenticatedUser == null
+          ? const AccountMenuScreen()
+          : ClientAccountScreen(user: authenticatedUser),
       RouteNames.allCategories => AllCategoriesScreen(user: authenticatedUser),
       RouteNames.serviceCategoryDetail => serviceDetailArguments == null
           ? _UnknownRouteScreen(routeName: settings.name)
@@ -144,7 +156,14 @@ abstract final class AppRoutes {
         CompanyConfirmationScreen(controller: companyController),
       RouteNames.login => const LoginScreen(),
       RouteNames.clientHome => const ClientHomeScreen(),
-      RouteNames.providerHome => const ProviderHomeScreen(),
+      RouteNames.providerHome => ProviderHomeScreen(user: authenticatedUser),
+      RouteNames.workerOrders => WorkerOrdersScreen(
+          worker: authenticatedUser is WorkerModel ? authenticatedUser : null,
+        ),
+      RouteNames.workerRequestDetail => WorkerRequestDetailScreen(
+          requestId:
+              settings.arguments is String ? settings.arguments! as String : '',
+        ),
       RouteNames.companyHome => const CompanyHomeScreen(),
       _ => _UnknownRouteScreen(routeName: settings.name),
     };
